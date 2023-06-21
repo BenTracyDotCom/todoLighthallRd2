@@ -1,6 +1,30 @@
-
+//TODO: add Title, Description, Status (completed, in progress, etc), and Due Date
+import { useState } from 'react';
 
 export default function AddTodoModal() {
+
+  const [form, setForm] = useState({
+    title: '',
+    description: '',
+    status: '',
+    due: ''
+  })
+
+  const handleTitle = (e) => {
+    setForm(...form, title = e.target.value)
+  }
+
+  const handleDescription = (e) => {
+    setForm(...form, description = e.target.value)
+  }
+
+  const handleStatus = (e) => {
+    setForm(...form, status = e.target.value)
+  }
+
+  const handleDue = (e) => {
+    setForm(...form, due = e.target.value)
+  }
 
   return (
     <div>
