@@ -5,14 +5,15 @@ const todos = ['do the dumb things I gotta do', 'touch the puppet head']
 
 export default function TodoList() {
 
-    return (
-        <div>
-            <div>
-                Todo List:
-            </div>
-            {todos.map(todo => (
-                <Todo todo={todo} />
-            ))}
-        </div>
-    )
+  return (
+    <div>
+      <div>
+        Todo List:
+      </div>
+      {todos.map(todo => (
+        <Todo todo={todo} />
+      ))}
+      <button className="btn" onClick={() => window.my_modal_2.showModal()}>open modal</button>
+    </div>
+  )
 }
