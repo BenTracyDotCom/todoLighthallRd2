@@ -40,7 +40,7 @@ export default {
     })
   },
   getTodos: (user, cb) => {
-    const query = `SELECT * FROM todos INNER JOIN users ON todos.owner = users.id WHERE users.name = ?`
+    const query = `SELECT todos.id, users.name, title, description, createdat, status, due FROM todos INNER JOIN users ON todos.owner = users.id WHERE users.name = ?`
     connection.query(query, [user.toLowerCase()], (err, results) => {
       if (err) {
         cb(err, null)
@@ -48,5 +48,27 @@ export default {
         cb(null, results)
       }
     })
+  },
+  updateTodo: (todo, cb) => {
+    const query = `UPDATE todos SET status = ? WHERE id = ?`
+    connection.query(query, [todo.status, todo.id], (err, results) => {
+      if(err) {
+        cb(err, null)
+      } else {
+        connection.query(`SELECT todos.id, title, description, createdat, status, due FROM todos INNER JOIN users ON todos.owner = users.id WHERE users.name = ?`, [todo.name], (err, results) => {
+          if(err){
+            cb(err, null)
+          } else (
+            cb(null, results)
+          )
+        })
+      }
+    })
+  },
+  filteredTodos: (user, filter) => {
+    //TODO
+  },
+  sortTodos: (user, sort) => {
+    //TODO
   }
 }

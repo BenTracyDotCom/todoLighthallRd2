@@ -6,5 +6,6 @@ router.get('/', (req, res) => (res.send('ok')))
 router.get('/todos/:user/:sort', controller.sendTodos)
 router.get('/todos/:user', controller.sendTodos)
 router.post('/todos', controller.createTodo)
+router.put('/todos', controller.updateTodo)
 
 export default router

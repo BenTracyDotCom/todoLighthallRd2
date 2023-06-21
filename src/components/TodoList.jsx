@@ -24,7 +24,7 @@ export default function TodoList({ user, todos, setTodos }) {
         Todo List:
       </div>
       {!!todos.length && todos.map(todo => (
-        <Todo todo={todo} />
+        <Todo todo={todo} setTodos={setTodos} key={'todo' + todo.id.toString()}/>
       ))}
       <button className="btn" onClick={() => window.add_todo_modal.showModal()}>Add Task</button>
     </div>
