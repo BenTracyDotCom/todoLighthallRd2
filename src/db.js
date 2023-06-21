@@ -8,6 +8,6 @@ const connection = mysql.createConnection({
 
 export default {
   verify: () => {
-    console.log('it`s working')
+    return("it's working!")
   }
 }
