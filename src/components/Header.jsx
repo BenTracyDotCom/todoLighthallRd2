@@ -1,10 +1,11 @@
 
 
-export default function Header() {
+export default function Header({ user }) {
 
     return (
         <div>
-            Header
+            Welcome, {user}!
+            <button className="btn">logout</button>
         </div>
     )
 }

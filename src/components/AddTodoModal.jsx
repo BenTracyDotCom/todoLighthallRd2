@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-export default function AddTodoModal() {
+export default function AddTodoModal({user}) {
 
   const [form, setForm] = useState({
+    user: user,
     title: '',
     description: '',
     status: '',

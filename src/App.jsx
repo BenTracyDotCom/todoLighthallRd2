@@ -6,14 +6,16 @@ import Header from './components/Header';
 import TodoList from './components/TodoList';
 import AddTodoModal from './components/AddTodoModal';
 
+
 function App() {
   
+  const [user, setUser] = useState('Brengeley')
 
   return (
     <>
-    <AddTodoModal />
+    <AddTodoModal user={user}/>
     <Login />
-    <Header />
+    <Header user={user}/>
     <TodoList />
     </>
   )
