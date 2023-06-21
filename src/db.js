@@ -14,14 +14,13 @@ export default {
     const query = `INSERT INTO users VALUES (?)`
     return connection.query(query, [name])
   },
-  addTodo: (todo) => {
+  addTodo: (todo, cb) => {
     const userQuery = `SELECT id FROM users WHERE name = ?`
-    return connection.query(query, [todo.user], (err, results) => {
+    return connection.query(userQuery, [todo.user.toLowerCase()], (err, results) => {
       if(err){
-        return err
+        cb(err, null)
       }
-      console.log(results)
+      cb(null, results)
     })
-
   }
 }

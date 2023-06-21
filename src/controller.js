@@ -5,7 +5,13 @@ const controller = {
     res.send(db.verify())
   },
   createTodo: (req, res) => {
-    res.send(JSON.stringify(req.body, 'what I got'))
+    console.log(req.body.user, 'made it')
+    db.addTodo(req.body, (err, data) => {
+      if(err){
+        console.log(err)
+      }
+      console.log(data, 'results')
+    })
   }
 }
 

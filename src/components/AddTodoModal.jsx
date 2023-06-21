@@ -6,9 +6,9 @@ export default function AddTodoModal({ user }) {
 
   const [form, setForm] = useState({
     user: user,
-    title: '',
-    description: '',
-    status: '',
+    title: 'Do the dumb things I gotta do',
+    description: 'Touch the puppet head',
+    status: 'Low priority',
     //will be {startDate: '2023-06-07' ...}
     due: {startDate: null, endDate: null}
   })
@@ -29,18 +29,18 @@ export default function AddTodoModal({ user }) {
 
   const handleDue = (date) => {
     setForm({ ...form, due: date })
-    console.log(date)
   }
 
   const handleSubmit = (e) => {
-    // e.preventDefault()
-    // let options = {
-    //   url: '/api',
-    //   data: {...form, user: user},
-    //   method: 'POST'
-    // }
-    // axios(options).then(res => console.log(res))
-    axios.get('/api/todos/sort').then(console.log)
+    //TODO: ensure valid inputs before submitting to api
+    e.preventDefault()
+    const betterDue = form.due.startDate
+    let options = {
+      url: '/api/todos',
+      data: {...form, user: user, due: betterDue},
+      method: 'POST'
+    }
+    axios(options).then(console.log)
   }
 
 
@@ -51,13 +51,12 @@ export default function AddTodoModal({ user }) {
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">Add Task:</h3>
           <input type="text" placeholder="Title" onChange={handleTitle} className="input input-bordered w-full max-w-xs" />
-          <textarea className="textarea textarea-bordered" placeholder="Description"></textarea>
+          <textarea className="textarea textarea-bordered" placeholder="Description" onChange={handleDescription}></textarea>
           <select className="select select-bordered w-full max-w-xs" onChange={handleStatus}>
             <option disabled selected>Status</option>
             <option>High priority</option>
             <option>Low priority</option>
             <option>In progress</option>
-            <option>Completed</option>
           </select>
           <div>
             Due:
