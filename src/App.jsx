@@ -16,7 +16,7 @@ function App() {
     <AddTodoModal user={user}/>
     <Login />
     <Header user={user}/>
-    <TodoList />
+    <TodoList user={user}/>
     </>
   )
 }
