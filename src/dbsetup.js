@@ -19,7 +19,8 @@ const query = `
     title VARCHAR(255),
     description TEXT,
     createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    due DATE,
+    status VARCHAR(50),
+    due DATETIME,
     FOREIGN KEY (owner) REFERENCES users(id)
   );
 `
