@@ -11,12 +11,12 @@ const controller = {
     })
   },
   createTodo: (req, res) => {
-    console.log(req.body.user, 'made it')
     db.addTodo(req.body, (err, data) => {
       if(err){
         console.log(err)
+      } else {
+        res.status(202).send(data)
       }
-      console.log(data, 'results')
     })
   }
 }

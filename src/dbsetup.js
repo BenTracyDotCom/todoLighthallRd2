@@ -8,12 +8,12 @@ const connection = mysql.createConnection({
 })
 
 const query = `
-  CREATE TABLE users (
+  CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255)
   );
 
-  CREATE TABLE todos (
+  CREATE TABLE IF NOT EXISTS todos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     owner INT,
     title VARCHAR(255),

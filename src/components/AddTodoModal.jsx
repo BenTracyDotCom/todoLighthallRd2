@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import DatePicker from 'react-tailwindcss-datepicker';
 
-export default function AddTodoModal({ user }) {
+export default function AddTodoModal({ user, setTodos }) {
 
   const [form, setForm] = useState({
     user: user,
@@ -10,7 +10,7 @@ export default function AddTodoModal({ user }) {
     description: 'Touch the puppet head',
     status: 'Low priority',
     //will be {startDate: '2023-06-07' ...}
-    due: {startDate: new Date(), endDate: null}
+    due: {startDate: null, endDate: null}
   })
 
   const [valid, setValid] = useState(false)
@@ -40,7 +40,12 @@ export default function AddTodoModal({ user }) {
       data: {...form, user: user, due: betterDue},
       method: 'POST'
     }
-    axios(options).then(console.log)
+    console.log(options)
+    axios(options)
+      .then(res => {
+        console.log(res.data)
+        setTodos(res.data)})
+      .catch(console.log)
   }
 
 

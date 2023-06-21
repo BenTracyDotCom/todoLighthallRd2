@@ -6,9 +6,9 @@ import Todo from './Todo';
 const todos = ['do the dumb things I gotta do', 'touch the puppet head']
 
 
-export default function TodoList({ user }) {
+export default function TodoList({ user, todos, setTodos }) {
   
-  const [todos, setTodos] = useState([])
+
 
   useEffect(() => {
     axios.get(`api/todos/${user}`)
