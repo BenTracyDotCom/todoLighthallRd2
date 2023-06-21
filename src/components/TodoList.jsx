@@ -13,7 +13,7 @@ export default function TodoList() {
       {todos.map(todo => (
         <Todo todo={todo} />
       ))}
-      <button className="btn" onClick={() => window.my_modal_2.showModal()}>open modal</button>
+      <button className="btn" onClick={() => window.add_todo_modal.showModal()}>Add Task</button>
     </div>
   )
 }
