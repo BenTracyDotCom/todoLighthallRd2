@@ -10,7 +10,7 @@ export default function AddTodoModal({ user }) {
     description: 'Touch the puppet head',
     status: 'Low priority',
     //will be {startDate: '2023-06-07' ...}
-    due: {startDate: null, endDate: null}
+    due: {startDate: new Date(), endDate: null}
   })
 
   const [valid, setValid] = useState(false)
@@ -34,7 +34,7 @@ export default function AddTodoModal({ user }) {
   const handleSubmit = (e) => {
     //TODO: ensure valid inputs before submitting to api
     e.preventDefault()
-    const betterDue = form.due.startDate
+    const betterDue = new Date(form.due.startDate+'T00:00:00').toISOString().slice(0, 19).replace('T', ' ');
     let options = {
       url: '/api/todos',
       data: {...form, user: user, due: betterDue},

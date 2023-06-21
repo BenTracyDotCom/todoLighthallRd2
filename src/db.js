@@ -20,12 +20,19 @@ export default {
       if(err){
         cb(err, null)
       } else {
+        const userId = results[0].id;
         const todoQuery = 'INSERT INTO todos (owner, title, description, createdat, due, status) VALUES (?, ?, ?, ?, ?, ?)';
-        connection.query(todoQuery, [results[0].id, todo.title, todo.description, new Date(), todo.due, todo.status], (err, results) => {
+        connection.query(todoQuery, [userId, todo.title, todo.description, new Date(), todo.due, todo.status], (err, results) => {
           if(err){
             cb(err, null)
           } else {
-            cb(null, results)
+            connection.query(`SELECT * FROM todos WHERE owner = ?`, [userId], (err, results) => {
+              if(err){
+                cb(err, null)
+              } else {
+                cb(null, results)
+              }
+            })
           }
         })
         
