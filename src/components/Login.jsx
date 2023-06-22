@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import axios from 'axios';
 import paperTodo from '../assets/papertodo.jpeg';
 
 export default function Login({ user, setUser }) {
@@ -22,10 +23,18 @@ export default function Login({ user, setUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(entry)
-    setUser(entry)
-    setEntry('')
-    navigate('/tasks')
+    const options = {
+      url: `api/todos/${entry}`,
+      method: 'POST'
+    }
+    axios(options)
+      .then(res => {
+        console.log(res.data)
+        setUser(entry)
+        setEntry('')
+        navigate('/tasks')
+      })
+      .catch(console.log)
   }
 
   return (
