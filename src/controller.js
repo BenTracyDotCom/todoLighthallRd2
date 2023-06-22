@@ -3,6 +3,15 @@ import db from './db.js';
 //TODO: protect routes via cookies
 
 const controller = {
+  addUser: (req, res) => {
+    db.addUser(req.params.user, (err, data) => {
+      if(err){
+        res.status(400).send(err)
+      } else {
+        res.status(200).end()
+      }
+    })
+  },
   sendTodos: (req, res) => {
     db.getTodos(req.params.user, (err, data) => {
       if(err){
