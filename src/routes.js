@@ -7,5 +7,6 @@ router.get('/todos/:user/:sort', controller.sendTodos)
 router.get('/todos/:user', controller.sendTodos)
 router.post('/todos', controller.createTodo)
 router.put('/todos', controller.updateTodo)
+router.put('/todos/delete', controller.deleteTodo)
 
 export default router

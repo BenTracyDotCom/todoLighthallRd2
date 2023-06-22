@@ -9,7 +9,16 @@ export default function Todo({ todo, setTodos }) {
     //TODO
   }
   const handleDelete = () => {
-    //TODO
+    const options = {
+      url: '/api/todos/delete',
+      method: 'PUT',
+      data: freshTodo
+    }
+    axios(options)
+      .then(res => {
+        setTodos(res.data)
+      })
+      .catch(console.log)
   }
 
   return (

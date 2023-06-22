@@ -44,7 +44,9 @@ export default function AddTodoModal({ user, setTodos }) {
     axios(options)
       .then(res => {
         console.log(res.data)
-        setTodos(res.data)})
+        setTodos(res.data)
+        window.add_todo_modal.hideModal()
+      })
       .catch(console.log)
   }
 
@@ -67,8 +69,9 @@ export default function AddTodoModal({ user, setTodos }) {
             Due:
             <DatePicker value={form.due} onChange={handleDue} asSingle={true} useRange={false}/>
           </div>
-
-          <button className="btn" onClick={handleSubmit}>Submit</button>
+          <div className="modal-action">
+            <button className="btn" onClick={handleSubmit}>Submit</button>
+            </div>
         </form>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>

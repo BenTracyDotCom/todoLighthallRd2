@@ -29,6 +29,15 @@ const controller = {
         res.status(202).send(data)
       }
     })
+  },
+  deleteTodo: (req, res) => {
+    db.deleteTodo(req.body, (err, data) => {
+      if(err){
+        res.status(400).send(err)
+      } else {
+        res.status(202).send(data)
+      }
+    })
   }
 }
 

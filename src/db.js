@@ -52,15 +52,30 @@ export default {
   updateTodo: (todo, cb) => {
     const query = `UPDATE todos SET status = ? WHERE id = ?`
     connection.query(query, [todo.status, todo.id], (err, results) => {
-      if(err) {
+      if (err) {
         cb(err, null)
       } else {
         connection.query(`SELECT todos.id, title, description, createdat, status, due FROM todos INNER JOIN users ON todos.owner = users.id WHERE users.name = ?`, [todo.name], (err, results) => {
-          if(err){
+          if (err) {
             cb(err, null)
-          } else (
+          } else {
             cb(null, results)
-          )
+          }
+        })
+      }
+    })
+  },
+  deleteTodo: (todo, cb) => {
+    connection.query(`DELETE FROM todos WHERE id = ?`, [todo.id], (err, results) => {
+      if (err) {
+        cb(err, null)
+      } else {
+        connection.query(`SELECT todos.id, title, description, createdat, status, due FROM todos INNER JOIN users ON todos.owner = users.id WHERE users.name = ?`, [todo.name], (err, results) => {
+          if (err) {
+            cb(err, null)
+          } else {
+            cb(null, results)
+          }
         })
       }
     })
