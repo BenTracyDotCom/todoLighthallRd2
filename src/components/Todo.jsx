@@ -8,6 +8,11 @@ export default function Todo({ todo, setTodos }) {
   const handleEdit = () => {
     //TODO
   }
+
+  const handleComplete = () => {
+    
+  }
+
   const handleDelete = () => {
     const options = {
       url: '/api/todos/delete',
@@ -22,16 +27,22 @@ export default function Todo({ todo, setTodos }) {
   }
 
   return (
-    <div className="relative flex flex-row border-2 font-architect">
-      <div className="flex flex-col justify-start">
-        <div className="text-xl">{todo.title}</div>
-        <div>{todo.description}</div>
-      </div>
-      <div>Task status: {todo.status}</div>
-      <div>Due: {todo.due}</div>
-      <div className="">
-        <div className="hover:text-green-500" onClick={handleEdit}>edit</div>
-        <div className="hover:text-error" onClick={handleDelete}>delete</div>
+    <div className="flex flex-col w-full">
+      <div className="divider"></div>
+      <div className="relative flex flex-row justify-between  font-architect">
+        <div className="flex flex-col justify-start">
+          <div className="text-2xl font-bold">{todo.title}</div>
+          <div>{todo.description}</div>
+        </div>
+        <div className="flex flex-col">
+          <div>Due: {new Date(todo.due).toDateString()}</div>
+          <div className="hover:text-blue-500 cursor-pointer">{todo.status}</div>
+        <div className="flex flex-row justify-between">
+          <div className="hover:text-green-500 cursor-pointer" onClick={handleComplete}>complete</div>
+          <div className="hover:text-green-500 cursor-pointer" onClick={handleEdit}>edit</div>
+          <div className="hover:text-error cursor-pointer" onClick={handleDelete}>delete</div>
+        </div>
+        </div>
       </div>
     </div>
   )
