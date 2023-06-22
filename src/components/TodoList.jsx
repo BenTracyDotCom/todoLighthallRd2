@@ -7,15 +7,15 @@ const todos = ['do the dumb things I gotta do', 'touch the puppet head']
 
 
 export default function TodoList({ user, todos, setTodos }) {
-  
+
 
 
   useEffect(() => {
     axios.get(`api/todos/${user}`)
-    .then(res => {
-      setTodos(res.data)
-    })
-    .catch(console.log)
+      .then(res => {
+        setTodos(res.data)
+      })
+      .catch(console.log)
   }, [todos])
 
   return (
@@ -24,8 +24,12 @@ export default function TodoList({ user, todos, setTodos }) {
         Todo List:
       </div>
       {!!todos.length && todos.map(todo => (
-        <Todo todo={todo} setTodos={setTodos} key={'todo' + todo.id.toString()}/>
+        <Todo todo={todo} setTodos={setTodos} key={'todo' + todo.id.toString()} />
       ))}
+      {!todos.length &&
+        <div>
+          Start adding tasks by clicking the button below!
+        </div>}
       <button className="btn" onClick={() => window.add_todo_modal.showModal()}>Add Task</button>
     </div>
   )

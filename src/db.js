@@ -10,9 +10,24 @@ export default {
   verify: () => {
     return ("it's working!")
   },
-  addUser: (name) => {
-    const query = `INSERT INTO users VALUES (?)`
-    return connection.query(query, [name])
+  addUser: (name, cb) => {
+    const query = `SELECT * FROM users WHERE name = ?`
+    connection.query(query, [name], (err, results) => {
+      if(err){
+        cb(err, null)
+      } else if (results && results.length){
+        cb(null, 'exists')
+      } else {
+        const insert = 'INSERT INTO users (name) VALUES (?)'
+        connection.query(insert, [name], (err, results) => {
+          if(err){
+            cb(err, null)
+          } else {
+            cb(null, 'created')
+          }
+        })
+      }
+    })
   },
   addTodo: (todo, cb) => {
     const userQuery = `SELECT id FROM users WHERE name = ?`
