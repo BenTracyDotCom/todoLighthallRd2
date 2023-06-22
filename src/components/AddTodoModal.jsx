@@ -40,13 +40,11 @@ export default function AddTodoModal({ user, setTodos }) {
       data: {...form, user: user, due: betterDue},
       method: 'POST'
     }
-    console.log(options)
     axios(options)
       .then(res => {
         console.log(res.data)
         setTodos(res.data)
-        console.log(res.data, 'todos', typeof setTodos)
-        window.add_todo_modal.showModal()
+        window.add_todo_modal.close()
       })
       .catch(console.log)
   }

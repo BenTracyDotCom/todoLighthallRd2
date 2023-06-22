@@ -19,7 +19,7 @@ function App() {
       <AddTodoModal user={user} setTodos={setTodos} />
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login user={user} setUser={setUser} />} />
           <Route path="/tasks" element={<TodoPage todos={todos} setTodos={setTodos} user={user} setUser={setUser} />} />
         </Routes>
       </Router>
