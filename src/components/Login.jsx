@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import paperTodo from '../assets/papertodo.jpeg';
 
-export default function Login({ user, setUser }) {
+export default function Login({ setUser, setLoggedIn }) {
 
   const [entry, setEntry] = useState('')
   const navigate = useNavigate()
@@ -32,6 +32,7 @@ export default function Login({ user, setUser }) {
         console.log(res.data)
         setUser(entry)
         setEntry('')
+        setLoggedIn(true)
         navigate('/tasks')
       })
       .catch(console.log)

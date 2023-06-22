@@ -4,8 +4,12 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'login' : "url('./src/assets/login.jpg')"
-      }
+        'login' : "url('assets/login.jpg')",
+        'todoList' : "url('assets/NotebookBorder.jpeg')"
+      },
+       fontFamily: {
+        'architect': ['"Architects Daughter"', 'sans-serif']
+       }
     },
   },
   plugins: [require('daisyui'), require('@tailwindcss/forms'), require('flowbite/plugin')],
