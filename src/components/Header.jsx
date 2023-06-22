@@ -1,11 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 
+export default function Header({ user, setUser }) {
 
-export default function Header({ user }) {
+  const navigate = useNavigate()
 
-    return (
-        <div>
-            Welcome, {user}!
-            <button className="btn">logout</button>
-        </div>
-    )
+  const handleLogout = () => {
+    setUser(''),
+    navigate('/')
+  }
+
+  return (
+    <div>
+      Welcome, {user}!
+      <button className="btn" onClick={handleLogout}>logout</button>
+    </div>
+  )
 }

@@ -5,6 +5,9 @@ import paperTodo from '../assets/papertodo.jpeg';
 export default function Login({ user, setUser }) {
 
   const [entry, setEntry] = useState('')
+  const navigate = useNavigate()
+
+  const submitButton = React.useRef(null)
 
   const handleUser = (e) => {
     setEntry(e.target.value)
@@ -13,15 +16,16 @@ export default function Login({ user, setUser }) {
   const enterPressed = (e) => {
     let code = e.keyCode || e.which;
     if(code === 13){
-      setUser(entry)
-      setEntry('')
-      console.log('entered')
+      submitButton.current.click()
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(entry)
+    setUser(entry)
+    setEntry('')
+    navigate('/tasks')
   }
 
   return (
@@ -37,8 +41,8 @@ export default function Login({ user, setUser }) {
                 <input type="text" className="input input-ghost text-4xl text-center h-full input-2xl" id="input" onChange={handleUser} onKeyDown={enterPressed} value={entry}/>
               </div>
             </div>
-            <div className="card bg-green-400 flex flex-row items-center justify-center w-2/12">
-              <div className="card-body items-center text-5xl" id="submit" onClick={handleSubmit}>✔️</div>
+            <div className="btn btn-accent h-full card bg-green-400 flex flex-row items-center justify-center w-2/12">
+              <button className="card-body items-center text-5xl" id="submit" ref={submitButton} onClick={handleSubmit}>✔️</button>
             </div>
           </div>
         </div>
