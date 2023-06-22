@@ -12,7 +12,8 @@ export default function AddTodoModal({ user, setTodos }) {
     //will be {startDate: '2023-06-07' ...}
     due: {startDate: null, endDate: null}
   })
-
+  
+  //TODO: prevent invalid submissions
   const [valid, setValid] = useState(false)
 
   const handleTitle = (e) => {
@@ -33,7 +34,6 @@ export default function AddTodoModal({ user, setTodos }) {
 
   const handleSubmit = (e) => {
     //TODO: ensure valid inputs before submitting to api
-    e.preventDefault()
     const betterDue = new Date(form.due.startDate+'T00:00:00').toISOString().slice(0, 19).replace('T', ' ');
     let options = {
       url: '/api/todos',
@@ -45,7 +45,8 @@ export default function AddTodoModal({ user, setTodos }) {
       .then(res => {
         console.log(res.data)
         setTodos(res.data)
-        window.add_todo_modal.hideModal()
+        console.log(res.data, 'todos', typeof setTodos)
+        window.add_todo_modal.showModal()
       })
       .catch(console.log)
   }

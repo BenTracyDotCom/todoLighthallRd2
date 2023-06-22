@@ -16,7 +16,7 @@ export default function TodoList({ user, todos, setTodos }) {
       setTodos(res.data)
     })
     .catch(console.log)
-  }, [])
+  }, [todos])
 
   return (
     <div>
