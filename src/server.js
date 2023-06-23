@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import cors from "cors";
 import router from './routes.js';
+import ViteExpress from 'vite-express';
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +16,6 @@ app.use('/', router)
 
 const PORT = 3000
 
-app.listen(PORT, () => {
+ViteExpress.listen(app, PORT, () => {
   console.log(`App listening on port ${PORT}`);
 })

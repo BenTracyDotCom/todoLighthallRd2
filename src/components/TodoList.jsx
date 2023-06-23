@@ -25,13 +25,16 @@ export default function TodoList({ user, todos, setTodos }) {
   }, [todos])
 
   return (
-    <div className="h-screen bg-login bg-cover overflow-y-hidden">
+    <div className="h-screen bg-login bg-cover overflow-y-hidden font-architect">
       <img src={notebook} className="fixed w-full h-[93%] mt-20 ml-1" />
       <div className="mx-5">
         <div className="relative mt-40 w-11/12 m-auto grid grid-cols-2 gap-x-28">
           <div className="">
-            <div>Sort:</div>
-            <div className="font-architect text-3xl mb-4 -mt-8 flex justify-center">Backlog</div>
+            <div className="">
+              <div className="text-l w-min">Sort:</div>
+              <div className="text-l w-min">Filter:</div>
+            </div>
+            <div className="font-architect text-3xl mb-4 -mt-20 w-min mx-auto">Backlog</div>
             <div className="h-[70vh] overflow-y-auto">
               <div className="">
                 {!!backlog.length && backlog.map(todo => (
