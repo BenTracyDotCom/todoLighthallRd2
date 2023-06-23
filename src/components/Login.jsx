@@ -16,7 +16,7 @@ export default function Login({ setUser, setLoggedIn }) {
 
   const enterPressed = (e) => {
     let code = e.keyCode || e.which;
-    if(code === 13){
+    if (code === 13) {
       submitButton.current.click()
     }
   }
@@ -41,14 +41,26 @@ export default function Login({ setUser, setLoggedIn }) {
   return (
     <div className="bg-login bg-cover h-screen flex items-center">
       <div className="card w-7/12 h-4/6 glass m-auto shadow-xl">
-        <figure className="w-full mt-0 h-2/6"><img src={paperTodo} alt="todo notebook" className="w-full mt-0" /></figure>
+        <figure className="w-full mt-0 h-2/6">
+          <img src={paperTodo} alt="todo notebook" className="w-full mt-0" />
+        </figure>
         <div className="card-body">
-          <h2 className="card-title m-auto -mt-3 text-5xl">Welcome!</h2>
-          <p className="m-auto pt-6 text-3xl">Please enter your name to continue:</p>
+          <div className="flex flex-col h-[25vh]">
+            <div className="my-auto justify-center w-full">
+              <h2 className="card-title text-5xl">
+                <div className="m-auto mb-7">
+                  Welcome to Task Tracker!
+                </div>
+              </h2>
+              <div className="m-auto">
+                <p className="w-max  m-auto pt-6 text-3xl">Please enter your name to continue:</p>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-row space-x-5">
             <div className="card bg-base-100 shadow-xl m-auto w-11/12">
               <div className="card-body">
-                <input type="text" className="input input-ghost text-4xl text-center h-full input-2xl" id="input" onChange={handleUser} onKeyDown={enterPressed} value={entry}/>
+                <input type="text" className="input input-ghost text-4xl text-center h-full input-2xl" id="input" onChange={handleUser} onKeyDown={enterPressed} value={entry} />
               </div>
             </div>
             <div className="btn btn-accent h-full card bg-green-400 flex flex-row items-center justify-center w-2/12">

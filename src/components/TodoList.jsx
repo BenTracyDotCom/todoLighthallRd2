@@ -30,6 +30,7 @@ export default function TodoList({ user, todos, setTodos }) {
       <div className="mx-5">
         <div className="relative mt-40 w-11/12 m-auto grid grid-cols-2 gap-x-28">
           <div className="">
+            <div>Sort:</div>
             <div className="font-architect text-3xl mb-4 -mt-8 flex justify-center">Backlog</div>
             <div className="h-[70vh] overflow-y-auto">
               <div className="">

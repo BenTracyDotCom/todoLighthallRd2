@@ -10,7 +10,7 @@ export default function Todo({ todo, setTodos }) {
   }
 
   const handleComplete = () => {
-    
+
   }
 
   const handleDelete = () => {
@@ -29,7 +29,7 @@ export default function Todo({ todo, setTodos }) {
   return (
     <div className="flex flex-col w-full">
       <div className="divider"></div>
-      <div className="relative flex flex-row justify-between  font-architect">
+      <div className="relative flex flex-row justify-between font-architect mr-5">
         <div className="flex flex-col justify-start">
           <div className="text-2xl font-bold">{todo.title}</div>
           <div>{todo.description}</div>
