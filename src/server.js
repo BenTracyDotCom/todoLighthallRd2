@@ -4,6 +4,7 @@ import cors from "cors";
 import ViteExpress from 'vite-express';
 import { fileURLToPath } from "url";
 import controller from "./controller.js";
+import env from "../env.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,7 +23,7 @@ app.put('/api/todos/delete', controller.deleteTodo)
 
 //app.use('/', router)
 
-const PORT = 3000
+const PORT = env.PORT
 
 ViteExpress.listen(app, PORT, () => {
   console.log(`App listening on port ${PORT}`);
