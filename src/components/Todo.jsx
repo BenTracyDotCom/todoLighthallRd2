@@ -20,7 +20,7 @@ export default function Todo({ todo, setTodos }) {
       data: freshTodo
     }
     axios(options)
-      .then(res => {
+    .then(res => {
         setTodos(res.data)
       })
       .catch(console.log)

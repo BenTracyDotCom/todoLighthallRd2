@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import http from 'https'
 import path from 'path'
 
+
 dotenv.config()
 
 export default defineConfig({
@@ -17,14 +18,14 @@ export default defineConfig({
   },
   server: {
     host: true,
-    proxy: {
-      "/api" : {
-        target: `http://localhost:${3000}`,
-        changeOrigin: true,
-        secure: false,
-        rewrite: ( path ) => path.replace(/^\/api/, '')
-      }
-    }
+    // proxy: {
+    //   "/api" : {
+    //     target: `http://localhost:${3000}`,
+    //     changeOrigin: true,
+    //     secure: false,
+    //     rewrite: ( path ) => path.replace(/^\/api/, '')
+    //   }
+    // }
   },
   resolve: {
     alias: {
